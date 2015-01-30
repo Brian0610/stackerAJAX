@@ -114,9 +114,10 @@ var showAnswerer = function(question) {
 var getInspired = function(tag) {
 	
 	// the parameters we need to pass in our request to StackOverflow's API
-	var request = {tagged: tag,
+	vvar request = {tagged: tag,
 								site: 'stackoverflow',
-								};
+								order: 'desc',
+								sort: 'creation'};
 	
 	var result = $.ajax({
 		url: "http://api.stackexchange.com/2.2/tags/" + tag + "/top-answerers/all_time?site=stackoverflow", 
