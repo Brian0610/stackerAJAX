@@ -8,8 +8,8 @@ $(document).ready( function() {
 	});
 	$('.inspiration-getter').submit( function(event){
 		$('.results').html(''); 
-		var topAnswerers = $(this).find("input[name='answerers']").val(); 
-		alert(topAnswerers); 
+		var tags = $(this).find("input[name='answerers']").val(); 
+		alert(tags); 
 	}); 
 });
 
