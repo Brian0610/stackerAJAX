@@ -9,7 +9,7 @@ $(document).ready( function() {
 	$('.inspiration-getter').submit( function(event){
 		$('.results').html(''); 
 		var tag = $(this).find("input[name='answerers']").val(); 
-		alert(tag); 
+		getInspired(tag); 
 	}); 
 });
 
@@ -111,7 +111,7 @@ var showAnswerer = function(question) {
 }; 
 
 
-var getUnanswered = function(tags) {
+var getInspired = function(tags) {
 	
 	// the parameters we need to pass in our request to StackOverflow's API
 	var request = {tagged: tags,
