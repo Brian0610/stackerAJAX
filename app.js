@@ -6,9 +6,11 @@ $(document).ready( function() {
 		var tags = $(this).find("input[name='tags']").val();
 		getUnanswered(tags);
 	});
-	
-
-
+	$('.inspiration-getter').submit( function(event){
+		$('.results').html(''); 
+		var topAnswerers = $(this).find("input[name='answerers']").val(); 
+		alert(topAnswerers); 
+	}); 
 });
 
 // this function takes the question object returned by StackOverflow 
