@@ -9,7 +9,7 @@ $(document).ready( function() {
 	$('.inspiration-getter').submit( function(event){
 		$('.results').html(''); 
 		var tag = $(this).find("input[name='answerers']").val(); 
-		getInspired(tag); 
+		alert(tag); 
 	}); 
 });
 
