@@ -9,7 +9,7 @@ $(document).ready( function() {
 	$('.inspiration-getter').submit( function(event){
 		$('.results').html(''); 
 		var tag = $(this).find("input[name='answerers']").val(); 
-		getInspiration(tag); 
+		alert(tag); 
 	}); 
 });
 
@@ -80,6 +80,20 @@ var getUnanswered = function(tags) {
 		dataType: "jsonp",
 		type: "GET",
 		})
+	.done(function(result){
+		var searchResults = showSearchResults(request.tagged, result.items.length);
+
+		$('.search-results').html(searchResults);
+
+		$.each(result.items, function(i, item) {
+			var question = showQuestion(item);
+			$('.results').append(question);
+		});
+	})
+	.fail(function(jqXHR, error, errorThrown){
+		var errorElem = showError(error);
+		$('.search-results').append(errorElem);
+	});
 	
 };
 
@@ -87,10 +101,20 @@ var getUnanswered = function(tags) {
 
 //------------THIS GETS INSPIRATION ----------------------//
 
-var getInspiration = function(tag) {
+var showAnswerer = function(question) {
+
+	var result = $('.templates .answerers').clone();
+
+	var userName = result.find('.userName');
+	userName.text(answerer.user.display_name);
+
+}; 
+
+
+var getUnanswered = function(tags) {
 	
 	// the parameters we need to pass in our request to StackOverflow's API
-	var request = {tagged: tag,
+	var request = {tagged: tags,
 								site: 'stackoverflow',
 								};
 	
@@ -99,8 +123,15 @@ var getInspiration = function(tag) {
 		data: request,
 		dataType: "jsonp",
 		type: "GET",
-	}); 
-
-	alert(result); 
-	
+		})
+	.done(function(result){
+		$.each(result.items, function(i, item) {
+			var answerer = showAnswerer(item);
+			$('.results').append(answerer);
+		});
+	})
+	.fail(function(jqXHR, error, errorThrown){
+		var errorElem = showError(error);
+		$('.search-results').append(errorElem);
+	});
 };
