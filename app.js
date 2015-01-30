@@ -6,6 +6,9 @@ $(document).ready( function() {
 		var tags = $(this).find("input[name='tags']").val();
 		getUnanswered(tags);
 	});
+	
+
+
 });
 
 // this function takes the question object returned by StackOverflow 
