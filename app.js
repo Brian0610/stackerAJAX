@@ -111,7 +111,7 @@ var showAnswerer = function(question) {
 }; 
 
 
-var getInspired = function(tags) {
+var getInspired = function(tag) {
 	
 	// the parameters we need to pass in our request to StackOverflow's API
 	var request = {tagged: tag,
